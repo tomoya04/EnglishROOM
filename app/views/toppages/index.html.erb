@@ -1,5 +1,9 @@
-<div class ="center jumbotron">
-   <div class ="text-center">
-     <h1>Welcome to EnglishRoom</h1>  
-   </div> 
-</div>
+<% if logged_in? %>
+    <p>ログインユーザー:<%= current_user.name %></p>
+  <% else %>
+   <div class ="center jumbotron">
+      <div class ="text-center">
+        <h1>Welcome to EnglishRoom</h1>  
+      </div> 
+   </div>
+<% end %>
