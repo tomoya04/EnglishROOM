@@ -27,16 +27,33 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if current_user == @user
     
-    
+      if @user.update(user_params)
+        flash[:success] = "ユーザーを編集しました"
+        redirect_to @user
+      else 
+        flash.now[:danger]= "ユーザーを編集できませんでした"
+        render :edit
+      end 
+    end
   end
 
   
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+      
+    flash[:success] = '退会しました'
+    redirect_to root_url 
   end
   
   def user_params
-   params.require(:user).permit(:name,:email,:password,:password_confirmation)
+   params.require(:user).permit(:name,:email,:password,:password_confirmation,:introduce,:image)
   end
 end

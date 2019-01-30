@@ -1,8 +1,18 @@
 <h3><%= @user.name %></h3>
 
-  <img src ="<%= gravatar_url(@user, { size: 200 }) %>" alt="" %>
   
-  <%= link_to "編集する",edit_user_path(@user) %>
+      <div>
+          <% if @user.image? %>
+            <%= image_tag @user.image, :class => "mw50" %>
+          <% else %>
+            <%= image_tag("m_e_others_500.png") %>
+          <% end %>
+      </div>
+  
+  
+  <% if current_user == @user %>
+     <%= link_to "編集する",edit_user_path(@user) %>
+  <% end %>
   
   <p>自己紹介<%= @user.introduce %></p>
   <a>フォロー</a>
