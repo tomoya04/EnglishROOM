@@ -56,6 +56,19 @@ class UsersController < ApplicationController
     redirect_to root_url 
   end
   
+  def followings 
+    @user = User.find(params[:id])
+    @users = @user.followings.page(params[:page])
+   
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers.page(params[:page])
+  end
+  
+  private
+  
   def user_params
    params.require(:user).permit(:name,:email,:password,:password_confirmation,:introduce,:image)
   end
