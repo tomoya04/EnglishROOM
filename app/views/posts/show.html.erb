@@ -1,0 +1,21 @@
+<div class ="media-left image">
+               <% if @post.user.image? %>
+                  <%= @post.user.image %>
+               <% else %>
+                  <%= image_tag("m_e_others_500.png")%>
+               <% end %>
+           </div>
+           <div class="media-body">
+               <div>
+                  <%=link_to @post.user.name, user_path(@post.user) %>
+               </div>
+               <span>posted at<%= @post.created_at %></span>
+               <div>
+                   <%=link_to @post.content, post_path(@post) %>
+               </div>
+               <% if @post.user == current_user %>
+               
+                   <%= link_to "編集する",edit_post_path(@post),class: 'btn btn-danger btn-xs' %>
+                   <%= link_to "削除する",@post,method: :delete, data: { confirm: "本当に？"},class: 'btn btn-danger btn-xs' %>
+               <% end %>
+           </div>

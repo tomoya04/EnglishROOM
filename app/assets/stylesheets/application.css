@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ul li div .image{
+    width: 20px;
+    height:20px;
+}
+

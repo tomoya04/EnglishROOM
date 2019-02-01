@@ -31,7 +31,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
   
   version :thumb do
-     process :resize_to_fill => [40, 40, gravity = ::Magick::CenterGravity]
+     process :resize_to_fill => [20, 20, gravity = ::Magick::CenterGravity]
   end
   
   def extension_white_list

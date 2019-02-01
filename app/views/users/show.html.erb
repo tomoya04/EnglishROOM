@@ -1,6 +1,4 @@
 <h3><%= @user.name %></h3>
-
-  
       <div>
           <% if @user.image? %>
             <%= image_tag @user.image, :class => "mw50" %>
@@ -10,14 +8,18 @@
       </div>
   
   
-  <% if current_user == @user %>
-     <%= link_to "編集する",edit_user_path(@user) %>
-  <% end %>
-  
-  <p>自己紹介<%= @user.introduce %></p>
-  <a>フォロー</a>
-  <a>フォロワー</a>
-<ul>
-   <li><a href="#">投稿一覧</a></li>
-   <li><a href="#">お気に入りした投稿</a></li>
-</ul>
+     <% if current_user == @user %>
+        <%= link_to "編集する",edit_user_path(@user) %>
+     <% end %>
+   <div>
+     <p>自己紹介<%= @user.introduce %></p>
+   </div>
+     <a>フォロー</a>
+     <a>フォロワー</a>
+<div>
+    <ul class ="nav nav-tabs nav-justified">
+       <li class ="<%="active" if current_page?(user_path(@user))%>"><%= link_to user_path(@user) do%>投稿一覧<span class ="badge"><%= @count_posts %><% end %></span></li>
+       <li><a href="#">お気に入りした投稿</a></li>
+    </ul>
+  <%= render "posts/posts",posts: @posts %>
+</div>

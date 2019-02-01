@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.order("created_at DESC").page(params[:page])
+    counts(@user)
   end
 
   def new
@@ -47,8 +49,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    
+    session[:user_id] = nil
     @user.destroy
-      
     flash[:success] = '退会しました'
     redirect_to root_url 
   end
