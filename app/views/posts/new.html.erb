@@ -3,6 +3,11 @@
         <div class="form-group">
              <%= f.text_area :content, class: 'form-control', rows: 10 %>
         </div>
-             <%= f.submit "Post!", class: 'btn btn-primary' %>
+        <p>
+            <%=f.label "画像をアップロード" %>
+        　　<%= f.file_field :image %>
+        </p>
+       
+       <%= f.submit "Post!", class: 'btn btn-primary' %>
      <% end %>
 <% end %>

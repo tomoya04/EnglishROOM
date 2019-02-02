@@ -3,7 +3,11 @@
       <li class ="media">
           <% @users.each do |user| %>
                <div class ="media-left">
-                 <img src ="<%= gravatar_url(user,{ size: 30 }) %>" alt="">
+                 <% if user.image? %>
+                 <%= image_tag(user.image.url,:size => "80x80") %>
+               <% else %>
+                 <%= image_tag("m_e_others_500.png",:size => "80x80") %>
+               <% end %>
                </div>
                <div class ="media-body">
                  <%= user.name %>

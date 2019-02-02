@@ -3,9 +3,9 @@
      <li class="media">
            <div class ="media-left image">
                <% if post.user.image? %>
-                  <%= post.user.image %>
+                  <%= image_tag(post.user.image.url,:size => "80x80") %>
                <% else %>
-                  <%= image_tag("m_e_others_500.png")%>
+                  <%= image_tag("m_e_others_500.png",:size => "80x80")%>
                <% end %>
            </div>
            <div class="media-body">
@@ -16,6 +16,11 @@
                <div>
                    <%=link_to post.content, post_path(post) %>
                </div>
+               
+               <p><%= image_tag(post.image) %></p>
+               
+               <%= render "favorites/like",post:post %>
+               
                
            </div>
         </li>

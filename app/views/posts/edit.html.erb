@@ -1,6 +1,13 @@
+<h4>編集ページ</h4>
 <%= form_for(@post) do |f| %>
+
+        <p><%= image_tag(@post.image) %></p>
         <div class="form-group">
              <%= f.text_area :content, class: 'form-control', rows: 10 %>
         </div>
+        <p>
+            <%=f.label "画像をアップロード" %>
+        　　<%= f.file_field :image %>
+        </p>
              <%= f.submit "edit!", class: 'btn btn-primary' %>
      <% end %>
