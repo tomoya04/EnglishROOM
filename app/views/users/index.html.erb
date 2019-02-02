@@ -1,3 +1,4 @@
+<h4>ユーザー一覧</h4>
 <% if @users.any? %>
   <ul class ="media">
       <li class ="media">
@@ -12,7 +13,7 @@
                
                
                <div class ="media-body">
-                 <%= user.name %>
+                 <p><%= link_to user.name, user_path(user) %></p>
                </div>
                <div>
                  <p><%= link_to "profile",user_path(user) %></p>

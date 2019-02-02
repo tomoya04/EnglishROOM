@@ -1,4 +1,4 @@
-<h3><%= @user.name %>さんの詳細</h3>
+<h3><%= @user.name %></h3>
       <div>
           <% if @user.image? %>
             <%= image_tag @user.image, :class => "mw50" %>
@@ -16,10 +16,10 @@
    </div>
      <%= link_to"フォロー",followings_user_path(@user) %><span class = "badge"><%= @count_followings %></span>
      <%= link_to"フォロワー",followers_user_path(@user) %><span class = "badge"><%= @count_followers %></span>
-<div>
-    <ul class ="nav nav-tabs nav-justified">
-       <li class ="<%="active" if current_page?(user_path(@user))%>"><%= link_to user_path(@user) do%>投稿一覧<span class ="badge"><%= @count_posts %><% end %></span></li>
-       <li class ="<%="active" if current_page?(like_user_path(@user))%>"><%= link_to like_user_path(@user) do%>お気に入りした投稿<span class ="badge"><%= @count_fav_posts %><% end %></span></li>
-    </ul>
-  <%= render "posts/posts",posts: @posts %>
-</div>
+    <div>
+        <ul class ="nav nav-tabs nav-justified">
+           <li class ="<%="active" if current_page?(user_path(@user))%>"><%= link_to user_path(@user) do%>投稿一覧<span class ="badge"><%= @count_posts %><% end %></span></li>
+           <li class ="<%="active" if current_page?(like_user_path(@user))%>"><%= link_to like_user_path(@user) do%>お気に入りした投稿<span class ="badge"><%= @count_fav_posts %><% end %></span></li>
+        </ul>
+      <%= render "posts/posts",posts: @fav_posts %>
+    </div>

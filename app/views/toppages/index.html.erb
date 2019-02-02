@@ -1,6 +1,5 @@
 <% if logged_in? %>
-    <p>ログインユーザー:<%= current_user.name %></p>
-    
+ <h3>Timeline</h3>
     <%= render "posts/posts", posts: @posts %>
   <% else %>
    <div class ="center jumbotron">

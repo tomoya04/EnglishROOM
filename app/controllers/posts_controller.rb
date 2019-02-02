@@ -35,6 +35,8 @@ class PostsController < ApplicationController
   def update
    @post = current_user.posts.find_by(id: params[:id])
     
+   
+    
     if  @post.update(post_params)
       flash[:success] = "投稿を編集しました"
       redirect_to @post
@@ -49,6 +51,15 @@ class PostsController < ApplicationController
     flash[:success] = "投稿を削除しました"
     redirect_to root_url
   end
+  
+  def img_delete
+    @post = Post.find(params[:post_id])
+    @post.remove_image!
+    @post.save
+    flash[:success] = "画像を削除しました"
+    redirect_to @post
+  end
+    
   
   private
   

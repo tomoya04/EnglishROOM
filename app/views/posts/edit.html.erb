@@ -1,6 +1,6 @@
 <h4>編集ページ</h4>
 <%= form_for(@post) do |f| %>
-
+　　　　　　
         <p><%= image_tag(@post.image) %></p>
         <div class="form-group">
              <%= f.text_area :content, class: 'form-control', rows: 10 %>
@@ -9,5 +9,14 @@
             <%=f.label "画像をアップロード" %>
         　　<%= f.file_field :image %>
         </p>
-             <%= f.submit "edit!", class: 'btn btn-primary' %>
+        <%= f.submit "edit!", class: 'btn btn-primary' %>
+        <% end %>
+        
+    <% unless @post.image == nil %>
+         <%= form_for(@post,url: post_img_delete_path(@post), method: :delete) do |f| %>
+             <%= image_tag(@post.image) %>
+             <%= f.submit "画像を削除" %>
+        <% end %> 
      <% end %>
+     
+    

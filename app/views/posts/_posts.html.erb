@@ -1,30 +1,28 @@
 <ul class ="media-list">
    <% posts.each do |post| %> 
-     <li class="media">
-           <div class ="media-left image">
+       <li class="media">
+           <div class ="media-left">
                <% if post.user.image? %>
                   <%= image_tag(post.user.image.url,:size => "80x80") %>
                <% else %>
                   <%= image_tag("m_e_others_500.png",:size => "80x80")%>
                <% end %>
            </div>
-           <div class="media-body">
+           <div class="media-body well">
                <div>
                   <%=link_to post.user.name, user_path(post.user) %>
                </div>
-               <span>posted at<%= post.created_at %></span>
+               
                <div>
-                   <%=link_to post.content, post_path(post) %>
+                   <p><%=link_to post.content, post_path(post) %></p>
                </div>
-               
-               <p><%= image_tag(post.image) %></p>
-               
+                  <%= image_tag(post.image) %>
+               <div>
+            　　 <span class ="text-muted">posted at<%= post.created_at %></span>
+               </div>
                <%= render "favorites/like",post:post %>
-               
-               
-           </div>
+            </div>   
         </li>
-    <% end %>
-
+   <% end %>
  <%= paginate posts %>
 </ul>

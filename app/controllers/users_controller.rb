@@ -67,6 +67,12 @@ class UsersController < ApplicationController
     @users = @user.followers.page(params[:page])
   end
   
+  def like
+    @user = User.find(params[:id])
+    @fav_posts = @user.fav_posts.order("created_at DESC").page(params[:page])
+    counts(@user)
+  end
+  
   private
   
   def user_params
