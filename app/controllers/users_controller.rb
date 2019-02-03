@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all.page(params[:page])
+    if params[:name].present? 
+      @users = @users.get_by_name params[:name]
+    end
   end
 
   def show

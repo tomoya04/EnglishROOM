@@ -24,6 +24,10 @@ class User < ApplicationRecord
     has_many :reverses_of_message,class_name:"Message",foreign_key: "receive_user_id"
     has_many :received_messages, through: :reverses_of_message, source: :user
     
+    scope :get_by_name, ->(name) {
+    where("name like ?", "%#{name}%")
+}
+    
     def follow(other_user)
       unless self == other_user
         self.relationships.find_or_create_by(follow_id: other_user.id)

@@ -1,3 +1,12 @@
+<div> 
+    <%= form_tag(users_path, method: "get") do %>
+        <%= label_tag :name, "名前" %>
+        <%= text_field_tag :name, params[:name] %>
+        <%= submit_tag "検索" %>
+    <% end %>
+</div>
+
+
 <h4>ユーザー一覧</h4>
    <% if @users.any? %>
      <ul class ="media-list"> 
