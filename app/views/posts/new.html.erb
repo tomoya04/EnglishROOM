@@ -1,13 +1,18 @@
 <% if logged_in? %>
-     <%= form_for(@post) do |f| %>
-        <div class="form-group">
-             <%= f.text_area :content, class: 'form-control', rows: 10 %>
-        </div>
-        <p>
+  <div class ="row">
+    <div class ="col-md-8">
+        <div>
+           <%= form_for(@post) do |f| %>
+          <div class="form-group ">
+            <%= f.text_area :content, class: "form-control", rows:10 %>
+          </div>
+        <div>
             <%=f.label "画像をアップロード" %>
         　　<%= f.file_field :image %>
-        </p>
-       
-       <%= f.submit "Post!", class: 'btn btn-primary' %>
+        </div>
+       <%= f.submit "Post", class:'btn btn-primary' %>
      <% end %>
+     </div>
+    </div>
+  </div>
 <% end %>

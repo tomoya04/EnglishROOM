@@ -10,19 +10,20 @@
          <%= f.text_field :name, class: 'form-control' %>
       </div>
       <div class ="form-group">
-         <%= f.label :email, "email"%>
+         <%= f.label :email, "Email"%>
          <%= f.email_field :email, class: 'form-control' %>
       </div>
       <div class ="form-group">
-         <%= f.label :password, "Password"%>
+         <%= f.label :password, "Password(minimum is 6 characters)"%>
          <%= f.password_field :password , class: 'form-control'%>
       </div>
       <div class ="form-group">
          <%= f.label :password_confirmation, "Confirmation"%>
          <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
-  
-         <%= f.submit "Sign up" %>
+      <div class ="text-center">
+         <%= f.submit "Sign up",class:'btn btn-primary'%>
+      </div>
       <% end %>
     </div>
   </div>

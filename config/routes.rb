@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   resources :posts, only: [:show, :new, :edit,:update,:create, :destroy] do
     resources :comments, only: [:create]
      delete :img_delete
-     
   end
   resources :comments, only: [:show,:destroy]
    

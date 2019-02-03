@@ -8,21 +8,20 @@
                   <%= image_tag("m_e_others_500.png",:size => "80x80")%>
                <% end %>
            </div>
-           <div class="media-body well">
-               <div>
-                  <%=link_to post.user.name, user_path(post.user) %>
+            <div class = "media-body">
+               <div class ="name">
+                 <%=link_to post.user.name, user_path(post.user) %>
                </div>
-               
                <div>
                    <p><%=link_to post.content, post_path(post) %></p>
-               </div>
+               </divqqqq
                   <%= image_tag(post.image) %>
                <div>
-            　　 <span class ="text-muted">posted at<%= post.created_at %></span>
+                  <%=link_to "comment",post_path(post) %>
+            　　 <span class ="text-muted">posted at<%= post.created_at %><%= render "favorites/like",post:post %></span>
                </div>
-               <%= render "favorites/like",post:post %>
-            </div>   
+            </div>
         </li>
    <% end %>
- <%= paginate posts %>
+  <%= paginate posts %>
 </ul>
