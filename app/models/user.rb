@@ -19,6 +19,11 @@ class User < ApplicationRecord
     has_many :favorites
     has_many :fav_posts, through: :favorites, source: :post
     
+    has_many :messages
+    has_many :sent_messages,through: :messages, source: :receive_user
+    has_many :reverses_of_message,class_name:"Message",foreign_key: "receive_user_id"
+    has_many :received_messages, through: :reverses_of_message, source: :user
+    
     def follow(other_user)
       unless self == other_user
         self.relationships.find_or_create_by(follow_id: other_user.id)

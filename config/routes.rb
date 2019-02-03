@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   get "signup", to: "users#new"
   resources :users, only: [:index, :show, :new, :edit,:update,:create, :destroy] do
+    resources :messages, only: [:index,:create,:destroy]
     member do
       get :followings
       get :followers
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
      delete :img_delete
   end
   resources :comments, only: [:show,:destroy]
-   
   resources :relationships, only: [:create,:destroy]
   resources :favorites, only: [:create, :destroy]
+  
 end
