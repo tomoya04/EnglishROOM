@@ -1,40 +1,38 @@
 <div class ="row">
     <div class ="col-md-8 col-md-offset-2">
 
-    <h2 class="text-center">User Lists</h2>
-    <div class="text-center search"> 
-    <%= form_tag(users_path, method: "get") do %>
-        <%= label_tag :name, "user name" %>
-        <%= text_field_tag :name, params[:name] %>
-        <%= submit_tag "Search User",class:'btn btn-primary btn-xs' %>
-    <% end %>
-</div>
+       <h2 class="text-center">User Lists</h2>
+          <div class="text-center search"> 
+            <%= form_tag(users_path, method: "get") do %>
+                <%= label_tag :name, "user name" %>
+                <%= text_field_tag :name, params[:name] %>
+                <%= submit_tag "Search User",class:'btn btn-primary btn-xs' %>
+            <% end %>
+          </div>
 
-   <% if @users.any? %>
-     <ul class ="media-list"> 
-          <% @users.each do |user| %>
-            <li class ="media">
-               <div class ="media-left">
-                   <% if user.image? %>
-                     <%= image_tag(user.image.url,:size => "80x80") %>
-                   <% else %>
-                     <%= image_tag("m_e_others_500.png",:size => "80x80") %>
-                   <% end %>
-               </div>
-               <div class ="media-body">
-                 <div class ="name">
-                     <%= link_to user.name, user_path(user) %>
-                 </div>
-                 <%= render "relationships/follow_button",user: user%>
-               </div>
-             </li>  
-             <hr>
-        <% end %>
-         
-     </ul>
-     
-  <%= paginate @users %>
-  <% end %>
+     <% if @users.any? %>
+         <ul class ="media-list"> 
+              <% @users.each do |user| %>
+                 <li class ="media">
+                    <div class ="media-left">
+                       <% if user.image? %>
+                         <%= image_tag(user.image.url,:size => "80x80") %>
+                       <% else %>
+                         <%= image_tag("m_e_others_500.png",:size => "80x80") %>
+                       <% end %>
+                    </div>
+                    <div class ="media-body">
+                       <div class ="name">
+                         <%= link_to user.name, user_path(user) %>
+                       </div>
+                       <%= render "relationships/follow_button",user: user%>
+                    </div>
+                 </li>  
+                 <hr>
+             <% end %>
+        </ul>
+        <%= paginate @users %>
+     <% end %>
 
-</div>
+    </div>
 </div>

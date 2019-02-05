@@ -1,79 +1,76 @@
 <div class ="row">
     <div class ="col-md-8 col-md-offset-2">
 
-<h2 class="text-center">Details Post</h2>
-    <div class ="media-left">
-       <% if @post.user.image? %>
-         <%=image_tag(@post.user.image.url,:size => "80x80") %>
-       <% else %>
-          <%= image_tag("m_e_others_500.png",:size => "80x80")%>
-       <% end %>
-    </div>
-    <div class="media-body">
-     <div class="name">
-      <%=link_to @post.user.name, user_path(@post.user) %>
-   </div>
-  <div class="border">
-       <div class="content">
-           <%=@post.content %>
-       </div>
-       <% if @post.image? %>
-        <p><%= image_tag(@post.image) %></p>
-       <% end %>
-       <div>
-        <span class ="text-muted">posted at<%= @post.created_at %></span>
-      　</div>
-    
-   
-   </div>
-   <% if @post.user == current_user %>
-      
-       <%= link_to "Edit",edit_post_path(@post) %>
-       <%= link_to "Delete",@post,method: :delete, data: { confirm: "本当に？"},class: 'btn btn-danger btn-xs' %>
-   <% end %>
-</div>
-
-<h4 class="text-center">Comments List</h4>
-  <ul class ="media-list">
-    <% @comments.each do |comment| %>
-      <li class="media">
-         <div class ="media-left">
-              <% if comment.user.image? %>
-                  <%= image_tag(comment.user.image.url,:size => "30x30") %>
+       <h2 class="text-center">Details Post</h2>
+            <div class ="media-left">
+               <% if @post.user.image? %>
+                 <%=image_tag(@post.user.image.url,:size => "80x80") %>
                <% else %>
-                  <%= image_tag("m_e_others_500.png",:size => "30x30")%>
+                  <%= image_tag("m_e_others_500.png",:size => "80x80")%>
                <% end %>
-         </div>
-         <div class ="media-body">  
-            <div>
-                <%= link_to comment.user.name,user_path(comment.user) %> : <%= comment.content %>
             </div>
-             <% if comment.user == current_user %>
-                <%= link_to "Delete",comment, method: :delete, data: { confirm: "本当に？"},class:"btn btn-danger btn-xs" %>
-             <% end %>
-          </div>
-        </li>
-       <hr>
-     <% end %>
-</ul>
+            <div class="media-body">
+               <div class="name">
+                  <%=link_to @post.user.name, user_path(@post.user) %>
+               </div>
+               <div class="border">
+                  <div class="content">
+                     <%=@post.content %>
+                  </div>
+                  
+                  <% if @post.image? %>
+                     <p><%= image_tag(@post.image) %></p>
+                  <% end %>
+                  <div>
+                     <span class ="text-muted">posted at<%= @post.created_at %></span>
+                  </div>
+               </div>
+                   <% if @post.user == current_user %>
+      
+                       <%= link_to "Edit",edit_post_path(@post) %>
+                       <%= link_to "Delete",@post,method: :delete, data: { confirm: "本当に？"},class: 'btn btn-danger btn-xs' %>
+                   <% end %>
+            </div>
 
+        <h4 class="text-center">Comments List</h4>
+            <ul class ="media-list">
+                <% @comments.each do |comment| %>
+                    <li class="media">
+                         <div class ="media-left">
+                              <% if comment.user.image? %>
+                                  <%= image_tag(comment.user.image.url,:size => "30x30") %>
+                               <% else %>
+                                  <%= image_tag("m_e_others_500.png",:size => "30x30")%>
+                               <% end %>
+                         </div>
+                        <div class ="media-body">  
+                           <div>
+                              <%= link_to comment.user.name,user_path(comment.user) %> : <%= comment.content %>
+                           </div>
+                            <% if comment.user == current_user %>
+                               <%= link_to "Delete",comment, method: :delete, data: { confirm: "本当に？"},class:"btn btn-danger btn-xs" %>
+                            <% end %>
+                       </div>
+                   </li>
+                 <hr>
+               <% end %>
+           </ul>
 
-<h4 class="text-center">Comments</h4>
- <div class ="row">
-    <div class ="col-md-6 col-md-offset-3">
-       <div>
-          <%= form_for([@post, @comment]) do |f| %>
-          <div class ="form-group">
-             <%= f.text_field :content ,class: "form-control",rows: 2 %>
-          </div>
-          <div class="text-center comment-btn">
-             <%= f.submit "Comment",class: 'btn btn-primary'%>
-          </div>
-          <% end %>
-       </div>
-    </div>
- </div>
+        <h4 class="text-center">Comments</h4>
+           <div class ="row">
+               <div class ="col-md-6 col-md-offset-3">
+                  <div>
+                     <%= form_for([@post, @comment]) do |f| %>
+                     <div class ="form-group">
+                        <%= f.text_field :content ,class: "form-control",rows: 2 %>
+                     </div>
+                      <div class="text-center comment-btn">
+                         <%= f.submit "Comment",class: 'btn btn-primary'%>
+                      </div>
+                     <% end %>
+                  </div>
+               </div>
+            </div>
  
-
-</div>
+    </div>
 </div>

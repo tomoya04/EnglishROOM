@@ -1,13 +1,13 @@
 <h2 class="text-center">Followings Lists</h2>
 
 <div class ="row">
-    <div class ="col-md-8 col-md-offset-2">
+   <div class ="col-md-8 col-md-offset-2">
 
-<% if @users.any? %>
-  <ul class ="media-list">
-        <% @users.each do |user| %>
+     <% if @users.any? %>
+        <ul class ="media-list">
+          <% @users.each do |user| %>
              <li class ="media">
-               <div class ="media-left">
+                <div class ="media-left">
                     <% if user.image? %>
                        <%= image_tag(user.image.url,:size => "80x80") %>
                     <% else %>
@@ -17,11 +17,11 @@
                 <div class ="media-body name">
                    <%= link_to user.name, user_path(user) %>
                 </div>
-            </li>   
-         <% end %>
-  </ul>
-  <%= paginate @users %>
-<% end %>
+             </li>   
+          <% end %>
+        </ul>
+      <%= paginate @users %>
+    <% end %>
 
-</div>
+   </div>
 </div>
