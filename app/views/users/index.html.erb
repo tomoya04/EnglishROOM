@@ -1,13 +1,15 @@
-<div> 
+<div class ="row">
+    <div class ="col-md-8 col-md-offset-2">
+
+    <h2 class="text-center">User Lists</h2>
+    <div class="text-center search"> 
     <%= form_tag(users_path, method: "get") do %>
-        <%= label_tag :name, "名前" %>
+        <%= label_tag :name, "user name" %>
         <%= text_field_tag :name, params[:name] %>
-        <%= submit_tag "検索" %>
+        <%= submit_tag "Search User",class:'btn btn-primary btn-xs' %>
     <% end %>
 </div>
 
-
-<h4>ユーザー一覧</h4>
    <% if @users.any? %>
      <ul class ="media-list"> 
           <% @users.each do |user| %>
@@ -23,9 +25,16 @@
                  <div class ="name">
                      <%= link_to user.name, user_path(user) %>
                  </div>
+                 <%= render "relationships/follow_button",user: user%>
                </div>
              </li>  
+             <hr>
         <% end %>
+         
      </ul>
+     
   <%= paginate @users %>
   <% end %>
+
+</div>
+</div>

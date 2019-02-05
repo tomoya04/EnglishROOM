@@ -2,14 +2,14 @@
     <%= form_for(current_user.favorites.find_by(post_id: post.id),html: { method: :delete })do |f| %>
        <%= hidden_field_tag :post_id, post.id %>
        <%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %>
-          <span class="color glyphicon glyphicon-heart" aria-hidden="true"></span>
+          <span class="fa fa-heart color" aria-hidden="true"></span>
        <% end %>
     <% end%>
  <% else %>
     <%= form_for(current_user.favorites.build) do |f| %>
        <%= hidden_field_tag :post_id, post.id %>
        <%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %>
-          <span class="color glyphicon glyphicon-heart-empty" aria-hidden="false"></span>
+          <span class="color fa fa-heart-o" aria-hidden="false"></span>
        <% end %>
 　   <% end %>
 <% end %>

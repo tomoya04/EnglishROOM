@@ -5,7 +5,7 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false}
     validates :introduce, length: { maximum: 255 } 
-    validates :password,presence: true,length: { minimum: 6 }  
+    validates :password,presence: true,length: { minimum: 6 }, on: :create 
     mount_uploader :image, ImageUploader
     has_secure_password
     
@@ -24,9 +24,7 @@ class User < ApplicationRecord
     has_many :reverses_of_message,class_name:"Message",foreign_key: "receive_user_id"
     has_many :received_messages, through: :reverses_of_message, source: :user
     
-    scope :get_by_name, ->(name) {
-    where("name like ?", "%#{name}%")
-}
+    scope :get_by_name, ->(name) {where("name like ?", "%#{name}%")}
     
     def follow(other_user)
       unless self == other_user

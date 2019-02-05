@@ -1,27 +1,41 @@
+<div class ="row">
+    <div class ="col-md-8 col-md-offset-2">
+
 <ul class ="media-list">
    <% posts.each do |post| %> 
        <li class="media">
-           <div class ="media-left">
+           <div class ="media-left media-object">
                <% if post.user.image? %>
                   <%= image_tag(post.user.image.url,:size => "80x80") %>
                <% else %>
                   <%= image_tag("m_e_others_500.png",:size => "80x80")%>
                <% end %>
            </div>
-            <div class = "media-body">
-               <div class ="name">
+           <div class ="media-body">
+               <h4 class ="media-heading name">
                  <%=link_to post.user.name, user_path(post.user) %>
+               </h4>
+           　　 <div class ="border">
+                  <div class="content">
+                    <%=link_to post.content, post_path(post) %>
+                  </div>
+                  <div>
+                    <%= image_tag(post.image) %>
+                  </div>
+                  <div class="like_button">
+                  <%= render "favorites/like",post:post %>
+                  </div>
+                  <span class ="text-muted posted-at">posted at<%= post.created_at %></span>
                </div>
                <div>
-                   <p><%=link_to post.content, post_path(post) %></p>
+                  <%=link_to "comment",post_path(post),class: "btn btn-primary btn-xs"%>
                </div>
-                  <%= image_tag(post.image) %>
-               <div>
-                  <%=link_to "comment",post_path(post) %>
-            　　 <span class ="text-muted">posted at<%= post.created_at %><%= render "favorites/like",post:post %></span>
-               </div>
-            </div>
+           </div>
         </li>
+      <hr>
    <% end %>
   <%= paginate posts %>
 </ul>
+
+</div>
+  </div>

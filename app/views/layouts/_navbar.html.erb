@@ -14,19 +14,19 @@
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
             <li>login_user:<%= current_user.name %></li>
-            <li><%= link_to "Users", users_path %></li>
-            <li><%= link_to "New post", new_post_path %></li>
+            <li class="name"><%= link_to "Users", users_path %></li>
+            <li class="name"><%= link_to "New post", new_post_path %></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle name" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'my profile', user_path(current_user) %></li>
-                <li><%= link_to "Logout", logout_path,method: :delete %></li>
+                <li class="name"><%= link_to 'My profile', user_path(current_user) %></li>
+                <li class="name"><%= link_to "Logout", logout_path,method: :delete %></li>
                 
               </ul>
             </li>
           <% else %>
-              <li><%= link_to "Signup",signup_path %></li>
-              <li><%= link_to "Login",login_path %></li>
+              <li class="name"><%= link_to "Signup",signup_path %></li>
+              <li class="name"><%= link_to "Login",login_path %></li>
           <% end %>
         </ul>
       </div>

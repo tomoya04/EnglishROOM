@@ -1,25 +1,35 @@
-<h2>メッセージ一覧</h2>
-<% user = User.find_by(id: @message.receive_user_id) %>
-<% @messages.each do |message| %>
-<div>
-<div class="media-left">
-<img class="media-object img-circle" src="<%= gravatar_url(message.user, { size: 50 }) %>" alt="">
+<h2 class="text-center">Message lists</h2>
+<div class ="row">
+   <div class ="col-md-8 col-md-offset-2">
+   <% user = User.find_by(id: @message.receive_user_id) %>
+    　<% @messages.each do |message| %>
+     　<div>
+          <div class="media-left">
+             <% if message.user.image? %>
+                  <%= image_tag(message.user.image.url,:size => "80x80") %>
+               <% else %>
+                  <%= image_tag("m_e_others_500.png",:size => "80x80")%>
+               <% end %>
+          </div>
+          <div class="media-body">
+             <div>
+                <%= link_to message.user.name, user_path(message.user) %> <span class="text-muted">posted at <%= message.created_at %></span>
+             </div>
+             <div>
+                 <%= message.content %><br>
+                 <% if current_user == message.user %>
+                     <%= link_to "Delete", user_message_path(current_user, message), method: :delete, data: { confirm: "You sure?" }, class:"btn btn-danger btn-xs" %>
+                 <% end %>
+             </div>
+          </div>
+         <hr>
+       </div>
+     <% end %>
+<h2 class="text-center">Message</h2>
+  <div class ="col-md-8 col-md-offset-2">
+   <%= render 'messages/form', message: @message %>
+  
+   </div>
 </div>
-<div class="media-body">
-<div>
-<%= link_to message.user.name, user_path(message.user) %> <span class="text-muted">posted at <%= message.created_at %></span>
+    
 </div>
-<div>
-<%= message.content %><br>
-<% if current_user == message.user %>
-<%= link_to "削除", user_message_path(current_user, message), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
-<% end %>
-</div>
-</div>
-<hr>
-</div>
-<% end %>
-
-<h2>メッセージ</h2>
-<%= render 'messages/form', message: @message %>
-<%= link_to "ホームへ戻る", user_path(current_user) %>

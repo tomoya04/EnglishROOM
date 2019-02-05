@@ -12,18 +12,57 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
-ul li div .image{
-    width: 20px;
-    height:20px;
-}
+
+ 
+
 
 .color {
     color:red;
+     border-style:none;
 }
 
 .name{
     font-weight: bold;
     font-size: 16px
-    
 }
+
+ul.media-list .btn-default {
+   border-color: #fff;
+}
+
+.border {
+     border: solid 1px #C0C0C0;
+     border-radius:5px;
+}
+
+.search{
+    margin-bottom: 30px;
+}
+
+.comment-btn{
+    margin-bottom:50px;
+}
+
+.content{
+    margin:10px;
+    font-size: 15px;
+}
+
+.like_button{
+    margin-left:200px;
+}
+
+.posted-at{
+    margin:8px;
+}
+
+.follow{
+    margin-bottom:20px;
+}
+
+.nav-tabs{
+    margin-bottom: 20px;
+}
+
