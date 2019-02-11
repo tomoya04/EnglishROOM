@@ -66,3 +66,27 @@ ul.media-list .btn-default {
     margin-bottom: 20px;
 }
 
+.top-wrapper{
+ background-image: url("3e676e2350e2dab014a07875875dadf4_m");
+ 
+ height: 800px;
+ background-size:cover;
+ color: white;
+  text-align: center;
+}
+
+.top-wrapper h1 {
+  margin-top: 30px;
+  margin-bottom:70px;
+  font-weight: bold;
+  font-size: 45px;
+  
+}
+
+.top-wrapper p {
+    font-size: 20px;
+    font-family: "serif";
+    font-weight: bold;
+    color: black;
+}
+

@@ -3,12 +3,16 @@
     <%= render "posts/posts", posts: @posts %>
 
 <% else %>
-   <div class ="center jumbotron">
-      <div class ="text-center">
-        <h1>EnglishROOMへようこそ</h1>  
+   <div class="top-wrapper">
+      <div class="container">
+        <h1>EnglishROOMへようこそ</h1>
         <p>EngiishROOMは英語学習者のための、Web上の自習室です</p>
-        <p>ここには、英語を学習されている方がたくさんいます。</p>
+        <p>ここには、英語を学習されている方がたくさんいます</p>
         <p>あなたの夢や目標に向かって、彼らと共に頑張りましょう!</p>
+        <%= link_to "Signup!",signup_path ,class: "btn btn-primary "%>
       </div> 
    </div>
+   
+   
 <% end %>
+
