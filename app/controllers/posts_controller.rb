@@ -19,11 +19,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     
     if @post.save
-      flash[:success]= "投稿しました"
+      flash[:success]= "Posted successfully"
       redirect_to root_url
     else
       @posts = current_user.feed_posts.order('created_at DESC').page(params[:page])
-      flash.now[:danger]="投稿に失敗しました"
+      flash.now[:danger]="Failed to post"
       render "toppages/index"
     end
   end 
@@ -38,17 +38,17 @@ class PostsController < ApplicationController
    
     
     if  @post.update(post_params)
-      flash[:success] = "投稿を編集しました"
+      flash[:success] = "Edit the post"
       redirect_to @post
     else
-      flash.now[:danger]= "投稿を編集できませんでした"
+      flash.now[:danger]= "Failed to edit the post"
       render "posts/edit"
     end
   end
 
   def destroy
     @post.destroy
-    flash[:success] = "投稿を削除しました"
+    flash[:success] = "Post has been deleted"
     redirect_to root_url
   end
   
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     @post.remove_image!
     @post.save
-    flash[:success] = "画像を削除しました"
+    flash[:success] = "Image has been deleted"
     redirect_to @post
   end
     

@@ -13,10 +13,10 @@ class MessagesController < ApplicationController
     @message.receive_user_id = @user.id
     
     if @message.save
-      flash[:success] = 'メッセージを送信しました。'
+      flash[:success] = "Sent DM message"
       redirect_back(fallback_location: root_path)
     else
-      flash.now[:danger] = 'メッセージを送信できませんでした。'
+      flash.now[:danger] = "Failed to send DM message"
       redirect_back(fallback_location: root_path)
     end
   end
@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = "Message has been deleted"
     redirect_back(fallback_location: root_path)
   end
   

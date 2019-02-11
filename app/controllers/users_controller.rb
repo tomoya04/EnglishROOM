@@ -22,10 +22,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      flash[:success] = "ユーザーを登録しました"
+      flash[:success] = "User has signed up"
       redirect_to @user
     else
-      flash.now[:danger]= "ユーザーを登録できませんでした"
+      flash.now[:danger]= "Failed to sign up"
       render :new
     end
   end
@@ -39,10 +39,10 @@ class UsersController < ApplicationController
     if current_user == @user
     
       if @user.update(user_params)
-        flash[:success] = "ユーザーを編集しました"
+        flash[:success] = "Edited user"
         redirect_to @user
       else 
-        flash.now[:danger]= "ユーザーを編集できませんでした"
+        flash.now[:danger]= "Failed to user"
         render :edit
       end 
     end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     
     session[:user_id] = nil
     @user.destroy
-    flash[:success] = '退会しました'
+    flash[:success] = "unsubscribed"
     redirect_to root_url 
   end
   

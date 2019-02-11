@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
    
    
     if @comment.save
-      flash[:success]= "コメントしました" 
+      flash[:success]= "Make a comment on post" 
       redirect_back(fallback_location: root_path)
     else
-      flash.now[:danger]= "コメントに失敗しました" 
+      flash.now[:danger]= "Failed to post a comment" 
       redirect_back(fallback_location: root_path)
     end
   end
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
    
     comment = Comment.find(params[:id])
     comment.destroy
-    flash[:success]= "コメントを削除しました" 
+    flash[:success]= "The comment has been deleted" 
     redirect_back(fallback_location: root_path)
   end
     
